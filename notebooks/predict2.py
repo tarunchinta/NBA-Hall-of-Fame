@@ -14,11 +14,14 @@ def predict(player):
     soft_prediction_for_player = rf_model.predict_proba(player_row_df)[0,1]
     hard_prediction_for_player = soft_prediction_for_player >= 0.5
 
+    """
     result = {
         'Probability of NBA player entering the Hall of Fame': soft_prediction_for_player,
         'Will player enter into Hall of Fame soon?': bool(hard_prediction_for_player)
     }
-
+    """
+    result = f'Probability of NBA player entering the Hall of Fame: {soft_prediction_for_player}\nWill player enter into Hall of Fame soon?: {bool(hard_prediction_for_player)}'
+    
     return result
 
 @app.route('/predict', methods=['GET', 'POST'])
